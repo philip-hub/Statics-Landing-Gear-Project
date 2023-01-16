@@ -2,6 +2,7 @@
 # ^  <-
 # |   |+M
 # ___>X
+#ASCII Axis :)
 
 #angle defined from 0,0 in degrees going counter clockwise to the x axsis
 
