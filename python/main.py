@@ -12,6 +12,7 @@ import operator
 
 #2D profile of part as defined by functions
 
+stressUnits="PSI"
 
 def stress(force, area):
     return(force/area)
@@ -32,5 +33,13 @@ for i in range (0,90):
     shears[i]=shearStress(10,i,5)
     normal[i]=normalStress(10,i,5)
 
-print(shears)
-print(normal)
+# print(shears)
+# print(normal)
+
+shearMaxAngle=max(shears.items(), key=operator.itemgetter(1))[0]
+shearMax=shears[shearMaxAngle]
+normalMaxAngle=max(normal.items(), key=operator.itemgetter(1))[0]
+normalMax=normal[normalMaxAngle]
+
+print(f"Max Shear is {shearMax} {stressUnits} at an angle of  {shearMaxAngle} degrees")
+print(f"Max Normal is {normalMax} {stressUnits} at an angle of  {normalMaxAngle} degrees")
