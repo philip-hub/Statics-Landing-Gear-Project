@@ -1,18 +1,30 @@
 # E for ASTM D638
 
-y_D638=c(11287.87879, 10505.05051, 8943.089431, 9853.658537, 9891.598916, 8536.585366, 9447.154472,9552.845528, 8130.081301, 8227.642276, 8804.347826, 8646.245059, 9126.984127)
+# data for D638
+thickness_D638 =c(0.198, 0.198, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.092, 0.092, 0.063, 0.063)
+width_D638=c(0.2, 0.1, 0.2, 0.15, 0.15, 0.1, 0.1, 0.1, 0.05, 0.05, 0.2, 0.088, 0.2, 0.07)
+force_D638=c(447, 208, 220, 181.8, 182.5, 105, 116.2, 117.5, 50, 50.6, 162, 70, 115, 37.5)
 
-#11287.878787878786, 11287.878787878786 these values have been excluded because they kinda look like outliers
+e_D638 = c(force_D638/(width_D638*thickness_D638))
 
-findE() <- function() {
 
-  qqnorm(log(y))#test if log norm works y is cumlative distrbution function 
+
+
+outlierTest <- function(){
   
-  qqline(log(y)) # line must go near points to prove model will represent data well
+}
+
+
+
+findE <- function(y) {
+
+  qqnorm(log(y))#test if log norm works y is cumlitive distribution function 
+  
+  qqline(log(y)) #line must go near points to prove model will represent data well
   
   mny = mean(log(y))
   
-  #log normakl works well with failure strength data
+  #log normal works well with failure strength data
   
   sty = sd(log(y))
   
@@ -24,3 +36,5 @@ findE() <- function() {
   plot(exp(seq.y),pr.break,xlab='evalue',ylab='prob break')
   
 }
+
+findE(e_D638)
