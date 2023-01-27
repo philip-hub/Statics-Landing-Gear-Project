@@ -10,7 +10,14 @@ e_D638 = c(force_D638/(width_D638*thickness_D638))
 
 
 
-outlierTest <- function(){
+outlierTest <- function(e){
+  
+  boxplot(e)
+  q=quantile(e, prob=c(.25, .5, .75), type=1)
+  return(q)
+  if(){
+    
+  }
   
 }
 
@@ -37,4 +44,5 @@ findE <- function(y) {
   
 }
 
+q=outlierTest(e_D638)
 findE(e_D638)
