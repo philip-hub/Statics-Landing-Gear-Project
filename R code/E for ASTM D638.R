@@ -20,14 +20,25 @@ e_D638 = append(e_D638_2008,e_D638_2007)
 
 
 
+fos <-function(fos,e){
+  e=c(fos*e)
+  return(e)
+}
+
+
+
 outlierTest <- function(e){
   
   boxplot(e)
   q=quantile(e, prob=c(.25, .5, .75), type=1)
-  return(q)
-  if(){
+  print(q)
+  
+  for i
+  if(q[1]<10000){
+  print("Hello")
     
   }
+  return(q)
   
 }
 
