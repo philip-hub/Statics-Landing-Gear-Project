@@ -62,7 +62,7 @@ nylonSorter <- function(e,vThickness,fThickness,t,range){
        if(i<(fThickness+t*fThickness)&i>(fThickness-t*fThickness)){
       index = which(vThickness==i)[p]
       e3=e[index]
-      e2=append(e2,i)
+      e2=append(e2,e3)
       p=p+1
       }}}
   return(e2)
@@ -97,6 +97,7 @@ e62=nylonSorter(e_D638,thickness_D638,.062,.1,TRUE)
 e94=nylonSorter(e_D638,thickness_D638,.094,.1,TRUE)
 e124=nylonSorter(e_D638,thickness_D638,.124,.1,TRUE)
 
+print(e124)
 
 
 
