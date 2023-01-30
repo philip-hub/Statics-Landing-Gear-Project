@@ -50,13 +50,20 @@ outlierTest <- function(e,upper,lower){
 
 nylonSorter <- function(e,vThickness,fThickness,t,range){
   e2=c()
+  p=1
   for(i in vThickness){
     if(range==FALSE & i == fThickness){
-      e2=append(e2,i)}
+      index = which(vThickness==i)[p]
+      e3=e[index]
+      e2=append(e2,e3)
+      p=p+1}
      
      if(range==TRUE){ 
        if(i<(fThickness+t*fThickness)&i>(fThickness-t*fThickness)){
+      index = which(vThickness==i)[p]
+      e3=e[index]
       e2=append(e2,i)
+      p=p+1
       }}}
   return(e2)
 }
