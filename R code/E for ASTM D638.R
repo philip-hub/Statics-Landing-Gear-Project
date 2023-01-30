@@ -86,16 +86,42 @@ findE <- function(y) {
 
 #62 , #94, #124
 
-e62=nylonSorter(e_D638,thickness_D638,.062,.05,TRUE)
-e94=nylonSorter(e_D638,thickness_D638,.094,.05,TRUE)
-e124=nylonSorter(e_D638,thickness_D638,.124,.05,TRUE)
+e62=nylonSorter(e_D638,thickness_D638,.062,.1,TRUE)
+e94=nylonSorter(e_D638,thickness_D638,.094,.1,TRUE)
+e124=nylonSorter(e_D638,thickness_D638,.124,.1,TRUE)
 
-print(e62)
+
+
 
 
 
 q=outlierTest(e_D638,TRUE,TRUE)
 print(q)
-findE(e_D638)
+
+
+fs = 1.15
+
+findE(e_D638) #find E
+findE(fos(fs,e_D638))#find E with FOS incoperated into the stats model
+findE(outlierTest(e_D638,TRUE,TRUE))#find E without outliers
+findE(fos(fs,outlierTest(e_D638,TRUE,TRUE))) #find E incoperating FOS into the stats model and without outliers
+
+findE(e62) #find E
+findE(fos(fs,e62))#find E with FOS incoperated into the stats model
+findE(outlierTest(e62,TRUE,TRUE))#find E without outliers
+findE(fos(fs,outlierTest(e62,TRUE,TRUE))) #find E incoperating FOS into the stats model and without outliers
+
+findE(e94) #find E
+findE(fos(fs,e94))#find E with FOS incoperated into the stats model
+findE(outlierTest(e94,TRUE,TRUE))#find E without outliers
+findE(fos(fs,outlierTest(e94,TRUE,TRUE))) #find E incoperating FOS into the stats model and without outliers
+
+
+findE(e124) #find E
+findE(fos(fs,e124))#find E with FOS incoperated into the stats model
+findE(outlierTest(e124,TRUE,TRUE))#find E without outliers
+findE(fos(fs,outlierTest(e124,TRUE,TRUE))) #find E incoperating FOS into the stats model and without outliers
+
+
 
 
