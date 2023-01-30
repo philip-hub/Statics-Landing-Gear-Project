@@ -15,31 +15,50 @@ e_D638_2007_p1 = c(force_D638_2007_p1/(width_D638_2007*thickness_D638_2007))
 e_D638_2007_p2 = c(force_D638_2007_p2/(width_D638_2007*thickness_D638_2007))
 e_D638_2007 = append(e_D638_2007_p1,e_D638_2007_p2)
 
+
+thickness_D638 = append(thickness_D638_2007,thickness_D638_2008)
 e_D638 = append(e_D638_2008,e_D638_2007)
 
 
 
 
 fos <-function(fos,e){
-  e=c(fos*e)
+  e=c(e/fos)
   return(e)
 }
 
 
 
-outlierTest <- function(e){
+outlierTest <- function(e,upper,lower){
   
   boxplot(e)
   q=quantile(e, prob=c(.25, .5, .75), type=1)
-  print(q)
-  
-  for i
-  if(q[1]<10000){
-  print("Hello")
-    
+  e2=e
+  for (i in e){
+   
+  if(i>q[3] & upper==TRUE){
+          e2 = e2[!e2 %in% i]
   }
-  return(q)
-  
+    
+  if(i>q[1] & lower==TRUE){
+        e2 = e2[!e2 %in% i]
+  }
+  }
+  return(e2)
+    
+}
+
+nylonSorter <- function(e,vThickness,fThickness,t,range){
+  e2=c()
+  for(i in vThickness){
+    if(range==FALSE & i == fThickness){
+      e2=append(e2,i)}
+     
+     if(range==TRUE){ 
+       if(i<(fThickness+t*fThickness)&i>(fThickness-t*fThickness)){
+      e2=append(e2,i)
+      }}}
+  return(e2)
 }
 
 
@@ -65,5 +84,18 @@ findE <- function(y) {
   
 }
 
-q=outlierTest(e_D638)
+#62 , #94, #124
+
+e62=nylonSorter(e_D638,thickness_D638,.062,.05,TRUE)
+e94=nylonSorter(e_D638,thickness_D638,.094,.05,TRUE)
+e124=nylonSorter(e_D638,thickness_D638,.124,.05,TRUE)
+
+print(e62)
+
+
+
+q=outlierTest(e_D638,TRUE,TRUE)
+print(q)
 findE(e_D638)
+
+
